@@ -6,7 +6,7 @@ const STORE_NAME = "ECO CLICK";
 
 // Masukkan nomor WhatsApp dengan format internasional.
 // Contoh Indonesia: 6281234567890
-const WHATSAPP_NUMBER = "+62 882-2618-2095";
+const WHATSAPP_NUMBER = "6288226182095";
 
 // Masukkan username Instagram tanpa tanda @
 const INSTAGRAM_USERNAME = "ecow.click";
