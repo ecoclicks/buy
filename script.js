@@ -1,28 +1,18 @@
-// =====================================================
-// EDIT BAGIAN INI SAJA UNTUK MENGUBAH WEBSITE
-// =====================================================
-
 const STORE_NAME = "ECO CLICK";
 
 const WHATSAPP_NUMBER = "6288226182095";
 
 const INSTAGRAM_USERNAME = "ecow.click";
 
-// =====================================================
-// DATA PRODUK
-// =====================================================
 
 const products = [
   {
     id: 1,
     name: "Eco Click Charm",
     price: "",
-    images: [
-      "prod1.JPG"
-    ],
+    images: ["prod1.JPG"],
     description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
   },
-
   {
     id: 2,
     name: "Nama Produk 2",
@@ -37,11 +27,9 @@ const products = [
   }
 ];
 
-// =====================================================
-// BAGIAN DI BAWAH INI TIDAK PERLU DIEDIT
-// =====================================================
 
 document.title = ${STORE_NAME} | Koleksi Gelang;
+
 
 function setGlobalInfo() {
   document.querySelectorAll(".brand").forEach(el => {
@@ -70,9 +58,11 @@ function setGlobalInfo() {
   }
 }
 
+
 function formatWhatsAppMessage(productName) {
-  return Halo, saya tertarik dengan Gelang Eco-Click🤗. Apakah masih tersedia?;
+  return Halo, saya tertarik dengan ${productName}. Apakah masih tersedia?;
 }
+
 
 function getWhatsAppUrl(productName) {
   const message = encodeURIComponent(
@@ -82,15 +72,11 @@ function getWhatsAppUrl(productName) {
   return https://wa.me/${WHATSAPP_NUMBER}?text=${message};
 }
 
+
 function renderProducts() {
   const grid = document.getElementById("productGrid");
 
   if (!grid) return;
-
-  if (!products.length) {
-    grid.innerHTML = <p class="empty">Belum ada produk.</p>;
-    return;
-  }
 
   grid.innerHTML = products.map(product => `
     <a class="product-card" href="detail.html?id=${product.id}">
@@ -109,6 +95,7 @@ function renderProducts() {
     </a>
   `).join("");
 }
+
 
 function renderDetail() {
   const container = document.getElementById("productDetail");
@@ -130,21 +117,28 @@ function renderDetail() {
         </a>
       </div>
     `;
-
     return;
   }
 
   document.title = ${product.name} | ${STORE_NAME};
 
-  const images = product.images || [product.image];
+  const images = product.images;
 
   container.innerHTML = `
     <div class="detail-gallery">
 
       <div class="detail-image-wrap">
-        <button class="gallery-btn gallery-prev" onclick="changeSlide(-1)">
-          ‹
-        </button>
+
+        ${
+          images.length > 1
+            ? `
+              <button
+                class="gallery-btn gallery-prev"
+                onclick="changeSlide(-1)"
+              >‹</button>
+            `
+            : ""
+        }
 
         <img
           id="detailMainImage"
@@ -153,31 +147,45 @@ function renderDetail() {
           class="detail-image"
         >
 
-        <button class="gallery-btn gallery-next" onclick="changeSlide(1)">
-          ›
-        </button>
+        ${
+          images.length > 1
+            ? `
+              <button
+                class="gallery-btn gallery-next"
+                onclick="changeSlide(1)"
+              >›</button>
+            `
+            : ""
+        }
+
       </div>
 
       ${
         images.length > 1
-        ? `
-          <div class="detail-thumbnails">
-            ${images.map((image, index) => `
-              <button
-                class="thumbnail-btn ${index === 0 ? "active" : ""}"
-                onclick="goToSlide(${index})"
-              >
-                <img src="${image}" alt="${product.name} ${index + 1}">
-              </button>
-            `).join("")}
-          </div>
-        `
-        : ""
+          ? `
+            <div class="detail-thumbnails">
+
+              ${images.map((image, index) => `
+                <button
+                  class="thumbnail-btn ${index === 0 ? "active" : ""}"
+                  onclick="goToSlide(${index})"
+                >
+                  <img
+                    src="${image}"
+                    alt="${product.name} ${index + 1}"
+                  >
+                </button>
+              `).join("")}
+
+            </div>
+          `
+          : ""
       }
 
     </div>
 
     <div class="detail-content">
+
       <p class="eyebrow">KOLEKSI GELANG</p>
 
       <h1>${product.name}</h1>
@@ -191,6 +199,7 @@ function renderDetail() {
       </p>
 
       <div class="contact-box">
+
         <p class="contact-label">Pesan sekarang</p>
 
         <p class="contact-number">
@@ -205,13 +214,16 @@ function renderDetail() {
         >
           Pesan via WhatsApp
         </a>
+
       </div>
+
     </div>
   `;
 
   window.currentImages = images;
   window.currentSlide = 0;
 }
+
 
 function updateSlide() {
   const image = document.getElementById("detailMainImage");
@@ -227,6 +239,7 @@ function updateSlide() {
     );
   });
 }
+
 
 function changeSlide(direction) {
   if (!window.currentImages) return;
@@ -244,10 +257,15 @@ function changeSlide(direction) {
   updateSlide();
 }
 
+
 function goToSlide(index) {
+  if (!window.currentImages) return;
+
   window.currentSlide = index;
+
   updateSlide();
 }
+
 
 setGlobalInfo();
 renderProducts();
