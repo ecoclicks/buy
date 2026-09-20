@@ -19,6 +19,13 @@ const products = [
     price: "",
     image: "prod1.JPG",
     description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
+  },
+  {
+    id: 2,
+    name: "Pilihan Charm",
+    price: "",
+    image: "charm-1.jpeg",
+    description: "Pilih charm sesuai kepribadianmu untuk memperindah dan mempercantik pergelangan tanganmu."
   }
 ];
 
