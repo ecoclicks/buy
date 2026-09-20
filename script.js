@@ -33,7 +33,7 @@ const products = [
       "prod2-2.JPG",
       "prod2-3.JPG"
     ],
-    description: "Deskripsi produk kedua."
+    description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
   }
 ];
 
