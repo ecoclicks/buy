@@ -31,34 +31,34 @@ const products = [
 // BAGIAN DI BAWAH INI TIDAK PERLU DIEDIT
 // =====================================================
 
-document.title = '${STORE_NAME} | Koleksi Gelang';
+document.title = ${STORE_NAME} | Koleksi Gelang;
 
 function setGlobalInfo() {
   document.querySelectorAll(".brand").forEach(el => el.textContent = STORE_NAME);
   document.querySelectorAll("#footerStoreName").forEach(el => el.textContent = STORE_NAME);
   document.querySelectorAll(".copyright").forEach(el => {
-    el.innerHTML = '©️ ${new Date().getFullYear()} ${STORE_NAME}';
+    el.innerHTML = ©️ ${new Date().getFullYear()} ${STORE_NAME};
   });
 
   const instagramLink = document.getElementById("instagramLink");
   if (instagramLink) {
-    instagramLink.textContent = '@${INSTAGRAM_USERNAME}';
-    instagramLink.href = 'https://instagram.com/${INSTAGRAM_USERNAME}';
+    instagramLink.textContent = @${INSTAGRAM_USERNAME};
+    instagramLink.href = https://instagram.com/${INSTAGRAM_USERNAME};
   }
 
   const whatsappLink = document.getElementById("whatsappLink");
   if (whatsappLink) {
-    whatsappLink.href = 'https://wa.me/${WHATSAPP_NUMBER}';
+    whatsappLink.href = https://wa.me/${WHATSAPP_NUMBER};
   }
 }
 
 function formatWhatsAppMessage(productName) {
-  return 'Halo, saya tertarik dengan Gelang Eco-Click🤗. Apakah masih tersedia?';
+  return Halo, saya tertarik dengan Gelang Eco-Click🤗. Apakah masih tersedia?;
 }
 
 function getWhatsAppUrl(productName) {
   const message = encodeURIComponent(formatWhatsAppMessage(productName));
-  return 'https://wa.me/${WHATSAPP_NUMBER}?text=${message}';
+  return https://wa.me/${WHATSAPP_NUMBER}?text=${message};
 }
 
 function renderProducts() {
@@ -102,7 +102,7 @@ function renderDetail() {
     return;
   }
 
-  document.title = '${product.name} | ${STORE_NAME}';
+  document.title = ${product.name} | ${STORE_NAME};
 
   container.innerHTML = `
     <div class="detail-image-wrap">
