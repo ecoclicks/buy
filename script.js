@@ -48,7 +48,7 @@ function setGlobalInfo() {
 
   const whatsappLink = document.getElementById("whatsappLink");
   if (whatsappLink) {
-    whatsappLink.'href = https://wa.me/${WHATSAPP_NUMBER}';
+    whatsappLink.href = 'https://wa.me/${WHATSAPP_NUMBER}';
   }
 }
 
