@@ -22,7 +22,7 @@ const products = [
     id: 1,
     name: "Gelang Manik",
     price: "",
-    image: "foto-1.jpeg",
+    image: "prod1.jpg",
     description: "Pilih warna gelang dengan memilih angka. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Tali adjustable (15-20 cm). Cocok untuk daily look, sekolah, atau kado."
   }
 ];
