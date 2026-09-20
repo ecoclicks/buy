@@ -53,7 +53,7 @@ function setGlobalInfo() {
 }
 
 function formatWhatsAppMessage(productName) {
-  return `Halo, saya tertarik dengan ${productName}. Apakah masih tersedia?`;
+  return `Halo, saya tertarik dengan Gelang Eco-Click🤗 ${productName}. Apakah masih tersedia?`;
 }
 
 function getWhatsAppUrl(productName) {
