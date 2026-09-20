@@ -23,7 +23,7 @@ const products = [
     name: "Eco Click Charm",
     price: "",
     image: "prod1.JPG",
-    description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Tali adjustable (15-20 cm). Cocok untuk daily look, Sekolah, atau Kado."
+    description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
   }
 ];
 
