@@ -26,7 +26,22 @@ const products = [
     price: "",
     image: "charm-1.jpeg",
     description: "Pilih charm sesuai kepribadianmu untuk memperindah dan mempercantik pergelangan tanganmu."
-  }
+  },
+  {
+  id: 3,
+  name: "Nama Produk 3",
+  price: "",
+  images: [
+    "charm2-1.jpeg",
+    "charm2-2.jpeg",
+    "charm2-3.jpeg",
+    "charm2-4.jpeg",
+    "charm2-5.jpeg",
+    "charm2-6.jpeg",
+    "charm2-7.jpeg"
+  ],
+  description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
+}
 ];
 
 // =====================================================
@@ -80,26 +95,33 @@ function renderProducts() {
   if (!grid) return;
 
   if (!products.length) {
-    grid.innerHTML = `<p class="empty">Belum ada produk.</p>`;
+    grid.innerHTML = '<p class="empty">Belum ada produk.</p>';
     return;
   }
 
-  grid.innerHTML = products.map(product => `
-    <a class="product-card" href="detail.html?id=${product.id}">
-      <div class="product-image-wrap">
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-          class="product-image"
-        >
-      </div>
+  grid.innerHTML = products.map(product => {
 
-      <div class="product-info">
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-      </div>
-    </a>
-  `).join("");
+    const productImage = product.images
+      ? product.images[0]
+      : product.image;
+
+    return '
+      <a class="product-card" href="detail.html?id=${product.id}">
+        <div class="product-image-wrap">
+          <img
+            src="${productImage}"
+            alt="${product.name}"
+            class="product-image"
+          >
+        </div>
+
+        <div class="product-info">
+          <h3>${product.name}</h3>
+          <p>${product.price}</p>
+        </div>
+      </a>
+    ';
+  }).join("");
 }
 
 function renderDetail() {
@@ -113,7 +135,7 @@ function renderDetail() {
   const product = products.find(item => item.id === id);
 
   if (!product) {
-    container.innerHTML = `
+    container.innerHTML = '
       <div class="not-found">
         <h1>Produk tidak ditemukan</h1>
         <p>Produk yang kamu cari tidak tersedia.</p>
@@ -121,20 +143,51 @@ function renderDetail() {
           Kembali ke Koleksi
         </a>
       </div>
-    `;
+    ';
     return;
   }
 
-  document.title = `${product.name} | ${STORE_NAME}`;
+  document.title = '${product.name} | ${STORE_NAME}';
 
-  container.innerHTML = `
-    <div class="detail-image-wrap">
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-        class="detail-image"
-      >
-    </div>
+  const images = product.images || [product.image];
+
+  const imageGallery = images.length > 1
+    ? '
+      <div class="detail-gallery">
+        <div class="gallery-main">
+          <button class="gallery-arrow gallery-prev" onclick="changeImage(-1)">
+            ‹
+          </button>
+
+          <img
+            id="galleryImage"
+            src="${images[0]}"
+            alt="${product.name}"
+            class="detail-image"
+          >
+
+          <button class="gallery-arrow gallery-next" onclick="changeImage(1)">
+            ›
+          </button>
+        </div>
+
+        <div class="gallery-counter">
+          <span id="galleryNumber">1</span> / ${images.length}
+        </div>
+      </div>
+    '
+    : '
+      <div class="detail-image-wrap">
+        <img
+          src="${images[0]}"
+          alt="${product.name}"
+          class="detail-image"
+        >
+      </div>
+    ';
+
+  container.innerHTML = '
+    ${imageGallery}
 
     <div class="detail-content">
       <p class="eyebrow">KOLEKSI GELANG</p>
@@ -166,7 +219,35 @@ function renderDetail() {
         </a>
       </div>
     </div>
-  `;
+  ';
+
+  window.currentImages = images;
+  window.currentImageIndex = 0;
+}
+
+function changeImage(direction) {
+  if (!window.currentImages) return;
+
+  window.currentImageIndex += direction;
+
+  if (window.currentImageIndex < 0) {
+    window.currentImageIndex = window.currentImages.length - 1;
+  }
+
+  if (window.currentImageIndex >= window.currentImages.length) {
+    window.currentImageIndex = 0;
+  }
+
+  const image = document.getElementById("galleryImage");
+  const number = document.getElementById("galleryNumber");
+
+  if (image) {
+    image.src = window.currentImages[window.currentImageIndex];
+  }
+
+  if (number) {
+    number.textContent = window.currentImageIndex + 1;
+  }
 }
 
 setGlobalInfo();
