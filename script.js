@@ -128,7 +128,7 @@ function renderDetail() {
   const product = products.find(item => item.id === id);
 
   if (!product) {
-    container.innerHTML = '
+    container.innerHTML = `
       <div class="not-found">
         <h1>Produk tidak ditemukan</h1>
         <p>Produk yang kamu cari tidak tersedia.</p>
@@ -136,16 +136,16 @@ function renderDetail() {
           Kembali ke Koleksi
         </a>
       </div>
-    ';
+    `;
     return;
   }
 
-  document.title = '${product.name} | ${STORE_NAME}';
+  document.title = `${product.name} | ${STORE_NAME}`;
 
   const images = product.images || [product.image];
 
   const imageGallery = images.length > 1
-    ? '
+    ? `
       <div class="detail-gallery">
         <div class="gallery-main">
           <button class="gallery-arrow gallery-prev" onclick="changeImage(-1)">
@@ -168,8 +168,8 @@ function renderDetail() {
           <span id="galleryNumber">1</span> / ${images.length}
         </div>
       </div>
-    '
-    : '
+    `
+    : `
       <div class="detail-image-wrap">
         <img
           src="${images[0]}"
@@ -177,9 +177,9 @@ function renderDetail() {
           class="detail-image"
         >
       </div>
-    ';
+    `;
 
-  container.innerHTML = '
+  container.innerHTML = `
     ${imageGallery}
 
     <div class="detail-content">
@@ -212,7 +212,7 @@ function renderDetail() {
         </a>
       </div>
     </div>
-  ';
+  `;
 
   window.currentImages = images;
   window.currentImageIndex = 0;
