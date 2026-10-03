@@ -29,7 +29,7 @@ const products = [
   },
   {
   id: 3,
-  name: "Nama Produk 3",
+  name: "Katalog Kami",
   price: "",
   images: [
     "gelang1.jpeg",
