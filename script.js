@@ -32,13 +32,13 @@ const products = [
   name: "Nama Produk 3",
   price: "",
   images: [
-    "charm2-1.jpeg",
-    "charm2-2.jpeg",
-    "charm2-3.jpeg",
-    "charm2-4.jpeg",
-    "charm2-5.jpeg",
-    "charm2-6.jpeg",
-    "charm2-7.jpeg"
+    "gelang1.jpeg",
+    "gelang2.jpeg",
+    "gelang3.jpeg",
+    "gelang4.jpeg",
+    "gelang5.jpeg",
+    "gelang6.jpeg",
+    "gelang7.jpeg"
   ],
   description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
 }
