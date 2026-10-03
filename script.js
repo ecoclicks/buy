@@ -99,29 +99,22 @@ function renderProducts() {
     return;
   }
 
-  grid.innerHTML = products.map(product => {
+  grid.innerHTML = products.map(product => `
+    <a class="product-card" href="detail.html?id=${product.id}">
+      <div class="product-image-wrap">
+        <img
+          src="${product.image || product.images[0]}"
+          alt="${product.name}"
+          class="product-image"
+        >
+      </div>
 
-    const productImage = product.images
-      ? product.images[0]
-      : product.image;
-
-    return '
-      <a class="product-card" href="detail.html?id=${product.id}">
-        <div class="product-image-wrap">
-          <img
-            src="${productImage}"
-            alt="${product.name}"
-            class="product-image"
-          >
-        </div>
-
-        <div class="product-info">
-          <h3>${product.name}</h3>
-          <p>${product.price}</p>
-        </div>
-      </a>
-    ';
-  }).join("");
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+      </div>
+    </a>
+  `).join("");
 }
 
 function renderDetail() {
