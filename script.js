@@ -41,6 +41,13 @@ const products = [
     "gelang7.jpeg"
   ],
   description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
+},
+  {
+  id: 4,
+  name: "❤️",
+  price: "",
+  image: "katalog.jpeg",
+  description: "Pilih gelang sesuai seleramu. Setiap gelang punya warna dan cerita tersendiri. Manik Handmade pilihan. Ringan & nyaman di pakai. Cocok untuk daily look, Sekolah, atau Kado."
 }
 ];
 
